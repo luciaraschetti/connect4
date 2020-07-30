@@ -53,6 +53,11 @@ textarea {
     color: #2A4F5F;
 }
 
+input:focus {
+    outline: none;
+    border-bottom: 2px solid #5e346d;
+}
+
 textarea {
     height: 7em;
     border: 2px solid #bebed2;
@@ -77,4 +82,11 @@ textarea {
     border: 2px solid #bebed2;
     color: #ffffff;      
     transition: 0.3s;               
+}
+
+
+textarea:focus,
+#submit:focus {
+    outline: none;
+    border: 2px solid #5e346d;
 }
