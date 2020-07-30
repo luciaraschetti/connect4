@@ -61,7 +61,18 @@ var validateForm = function() {
        }
     }
 
-    (isValid) ? sendEmail(name, message) : console.log('Invalid Fields');
+    (isValid) ? sendEmail(name, message) : styleBtn();
+}
+
+var styleBtn = function() {
+    submitBtn.innerHTML = 'Unable to send Email';
+    submitBtn.className += 'error';
+    setTimeout(erroMsg, 2000);
+}
+
+var erroMsg = function() {
+    submitBtn.className = ' ';
+    submitBtn.innerHTML = 'Send Message';
 }
 
 window.onload = function() {
