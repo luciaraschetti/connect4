@@ -96,3 +96,14 @@ input {
     padding: 0.1em 0.45em !important;
     transition: 0.3s;
 }
+
+@media only screen and (max-width: 600px) {
+    .shift-left {
+        transform: translatey(30px);
+        transition: 0.5s;
+    }
+
+    .btn {
+        transform: translateY(25px);
+    }
+}
