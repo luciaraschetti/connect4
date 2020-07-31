@@ -42,6 +42,19 @@ input {
 #add-player {
     padding: 0.3em 0.5em;
     border-radius: 50%;
+    border: 2px solid transparent;
+    transition: 0.3s
+}
+
+#add-player:hover {
+    border: 2px solid #ffffff;
+    transition: 0.3s
+}
+
+#add-player:focus,
+.btn:focus {
+    outline: none;
+    border: 2px solid #ffffff;
 }
 
 .btn {
@@ -49,12 +62,19 @@ input {
     margin: 0.5em 0;
     padding: 0.5em;
     box-sizing: border-box;
-    border-radius: 10px; 
-    border-width: 0px;
+    border-radius: 10px;
+    border: 2px solid transparent;
     background-color: #5e6491;
     font-size: 1.5rem;
     color: #f0ffff;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    border: 2px solid #ffffff;
+    transform: scale(1.03);
+    transition: 0.3s;
 }
 
 .hidden {
