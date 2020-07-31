@@ -16,7 +16,7 @@
     border: 2px solid transparent;
     background-color: #ffffff;
     font-size: 1.7rem;
-    color: #000000;
+    color: #565c88;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -24,8 +24,8 @@
 }
 
 .menu-btn:hover {
-    border: 2px solid #5e346d;
-    background-color: #9B88B5;
+    border: 2px solid #ffffff;
+    background-color: #5e6491;
     font-size: 1.8rem;
     color: #ffffff;
     transform: scale(1.05);

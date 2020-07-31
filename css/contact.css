@@ -54,7 +54,7 @@ textarea {
 
 input:focus {
     outline: none;
-    border-bottom: 2px solid #5e346d;
+    border-bottom: 2px solid #5e6491;
 }
 
 textarea {
@@ -78,7 +78,7 @@ textarea {
 }
 
 #submit:hover {
-    border: 2px solid #bebed2;
+    border: 2px solid #5e6491;
     color: #ffffff;      
     transition: 0.3s;               
 }
@@ -87,7 +87,7 @@ textarea {
 textarea:focus,
 #submit:focus {
     outline: none;
-    border: 2px solid #5e346d;
+    border: 2px solid #5e6491;
 }
 
 .error {

@@ -13,6 +13,13 @@
     text-shadow: 0 3px 3px #5e6491, 0px 3px 1px #5e6491;
 }
 
+.input-style {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 input {
     width: 100%;
     margin: 0.5em 0;
@@ -21,13 +28,6 @@ input {
     border-radius: 10px 0 0 10px; 
     border-width: 0px; 
     font-size: 2rem;
-}
-
-.input-style {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 .tag {
@@ -40,10 +40,11 @@ input {
 }
 
 #add-player {
-    padding: 0.3em 0.5em;
+    padding: 0.1em 0.3em;
+    font-size: 1.5rem;
     border-radius: 50%;
     border: 2px solid transparent;
-    transition: 0.3s
+    transition: 0.3s;
 }
 
 #add-player:hover {
@@ -73,10 +74,20 @@ input {
 
 .btn:hover {
     border: 2px solid #ffffff;
-    transform: scale(1.03);
     transition: 0.3s;
 }
 
 .hidden {
     display: none;
+}
+
+.shift-left {
+    position: absolute;
+    transform: translateX(-245px);
+    transition: 0.3s;
+}
+
+.del {
+    padding: 0.1em 0.45em !important;
+    transition: 0.3s;
 }
