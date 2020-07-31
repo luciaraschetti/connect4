@@ -36,7 +36,7 @@ input {
     border-radius: 0 10px 10px 0;
     background: #5e6491;
     font-size: 1.25rem;
-    color: #e7e7e7;
+    color: #ffffff;
 }
 
 #add-player {
@@ -84,7 +84,12 @@ input {
 .shift-left {
     position: absolute;
     transform: translateX(-245px);
-    transition: 0.3s;
+    transition: 0.5s;
+}
+
+.shift-right {
+    transform: translateX(0);
+    transition: 0.5s;
 }
 
 .del {

@@ -15,10 +15,18 @@ window.onload = function() {
     btnAdd = document.getElementById('add-player');
     btnAddContainer = document.getElementById('btn-container')
     btnAdd.addEventListener('click', function() {
-        p3Tag.className = 'tag';
-        p3Name.className = ' ';
-        btnAddContainer.className += ' shift-left';
-        btnAdd.className += ' del';
-        btnAdd.innerHTML = '-';
+        if(btnAddContainer.className === '' || btnAddContainer.className === 'shift-right') {
+            p3Tag.className = 'tag';
+            p3Name.className = ' ';
+            btnAddContainer.className = 'shift-left';
+            btnAdd.className += ' del';
+            btnAdd.innerHTML = '-';
+        } else {
+            p3Tag.className = 'hidden';
+            p3Name.className = 'hidden';
+            btnAddContainer.className = 'shift-right';
+            btnAdd.className = 'btn';
+            btnAdd.innerHTML = '+';
+        }
     });
 }
