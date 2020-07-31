@@ -35,7 +35,7 @@ h1 {
 }
 
 .icon:hover {
-    font-size: 1.7rem;
+    transform: scale(1.1);
     color: #414141;
     transition: 0.3s;
 }
