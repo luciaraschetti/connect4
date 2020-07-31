@@ -4,15 +4,16 @@
     align-items: center;
     justify-content: flex-start;
     flex-grow: 2;
-    min-width: 25vw;
+    min-width: 30vw;
 }
 
 .menu-btn {
     width: 100%;
     margin: 0.5em 0;
-    padding: 0.5em 1.5em;
+    padding: 0.5em;
     box-sizing: border-box;
     border-radius: 30px;
+    border: 2px solid transparent;
     background-color: #ffffff;
     font-size: 1.7rem;
     color: #000000;
