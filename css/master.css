@@ -60,3 +60,16 @@ h1 {
     font-family: Montserrat, sans-serif;
     font-size: 0.8rem;
 }
+
+.hidden {
+    display: none;
+}
+
+.disabled {
+    color: #b8b8b8;
+    pointer-events: none;
+}
+
+.error {
+    background-color: #b85e5e !important;
+}

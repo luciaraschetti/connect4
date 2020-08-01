@@ -171,12 +171,3 @@
     background-color: #5e6491;
     color: #f0ffff;
 }
-
-.disabled {
-    color: #b8b8b8;
-    pointer-events: none;
-}
-
-.hidden {
-    display: none;
-}

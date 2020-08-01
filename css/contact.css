@@ -89,7 +89,3 @@ textarea:focus,
     outline: none;
     border: 2px solid #5e6491;
 }
-
-.error {
-    background-color: #b85e5e !important;
-}

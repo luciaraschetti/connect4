@@ -57,7 +57,19 @@ var savePlayerNames = function() {
     localStorage['playersNames'] = JSON.stringify(playerNames);
 }
 
+var errorBtn = function() {
+    btnStart.innerHTML = 'Invalid Names';
+    btnStart.className += ' error';
+    setTimeout(erroMsg, 2000);
+}
+
+var erroMsg = function() {
+    btnStart.className = 'btn';
+    btnStart.innerHTML = 'Start Game';
+}
+
 var nextPage = function() {
+    savePlayerNames();
     location.href = 'game.html';
 }
 
@@ -74,7 +86,6 @@ window.onload = function() {
         displayInput();
     });
     btnStart.addEventListener('click', function() {
-        savePlayerNames();
-        (validateInput()) ? nextPage() : console.log('Invalid Input');
+        (validateInput()) ? nextPage() : errorBtn();
     });
 }
