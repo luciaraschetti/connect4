@@ -69,11 +69,11 @@
 }
 
 .slot.p1 {
-    background-color: #f7f77b;
+    background-color: #f7f77b !important;
 }
 
 .slot.p2 {
-    background-color: #55e7e7;
+    background-color: #55e7e7 !important;
 }
 
 #divider{
@@ -146,7 +146,7 @@
 }
 
 #turn {
-    background-color:  #55e7e7;
+    background-color:  #f7f77b;
     border: 8px dashed #a1a6cad2;
     padding: 0.4em;
 }
@@ -171,4 +171,14 @@
     font-size: 1.5rem;
     background-color: #5e6491;
     color: #f0ffff;
+}
+
+.switch-p1 {
+    transform: rotateY(180deg) !important;
+    transition: 0.3s;
+}
+
+.switch-p2 {
+    transform: rotateY(360deg) !important;
+    transition: 0.3s;
 }
