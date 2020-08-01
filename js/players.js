@@ -9,6 +9,45 @@ var btnAdd = null;
 var btnAddContainer = null;
 var playerNames = [];
 
+var displayInput = function() {
+    if(btnAddContainer.className === '' || btnAddContainer.className === 'shift-right') {
+        p3Tag.className = 'tag';
+        p3Name.className = ' ';
+        btnAddContainer.className = 'shift-left';
+        btnAdd.className += ' del';
+        btnAdd.innerHTML = '-';
+    } else {
+        p3Tag.className = 'hidden';
+        p3Name.className = 'hidden';
+        btnAddContainer.className = 'shift-right';
+        btnAdd.className = 'btn';
+        btnAdd.innerHTML = '+';
+    }
+}
+
+var validateInput = function() {
+    var isValid = true;
+
+    if(p3Name.className === ' ' && p3Name.value.length < 3) {
+        p3Name.value = '';
+        p3Name.placeholder = 'Too short!';
+        isValid = false;
+    }
+
+    if(p1Name.value.length < 3) {
+        p1Name.value = '';
+        p1Name.placeholder = 'Too short!';
+        isValid = false;
+    }
+
+    if(p2Name.value.length < 3) {
+        p2Name.value = '';
+        p2Name.placeholder = 'Too short!';
+        isValid = false;
+    }
+    return isValid;
+}
+
 var savePlayerNames = function() {
     if(p3Name.value.length > 0 ) {
         playerNames.push({namep1: p1Name.value, namep2: p2Name.value, namep3: p3Name.value});
@@ -32,22 +71,10 @@ window.onload = function() {
     btnAddContainer = document.getElementById('btn-container');
 
     btnAdd.addEventListener('click', function() {
-        if(btnAddContainer.className === '' || btnAddContainer.className === 'shift-right') {
-            p3Tag.className = 'tag';
-            p3Name.className = ' ';
-            btnAddContainer.className = 'shift-left';
-            btnAdd.className += ' del';
-            btnAdd.innerHTML = '-';
-        } else {
-            p3Tag.className = 'hidden';
-            p3Name.className = 'hidden';
-            btnAddContainer.className = 'shift-right';
-            btnAdd.className = 'btn';
-            btnAdd.innerHTML = '+';
-        }
+        displayInput();
     });
     btnStart.addEventListener('click', function() {
         savePlayerNames();
-        nextPage();
+        (validateInput()) ? nextPage() : console.log('Invalid Input');
     });
 }
