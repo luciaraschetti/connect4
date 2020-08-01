@@ -28,10 +28,6 @@
     justify-content: space-between;
 }
 
-#time p {
-    margin: 10px 15px;
-}
-
 #gameboard{
     display: flex;
     flex-direction: column;
@@ -50,12 +46,12 @@
 }
 
 .column{
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5px 5px;
+    flex-grow: 1;
+    padding: 0.5em;
     border-radius: 25px;
     background-color: #777eaf;
 }
@@ -81,8 +77,9 @@
 }
 
 #divider{
-    width: 96.2%;
+    width: 100%;
     padding: 0.5em;
+    box-sizing: border-box;
     background-color: #5e6491;
 }
 
@@ -136,8 +133,15 @@
 }
 
 .player p {
+    margin: 0.2em 0;
     padding: 0;
-    margin: 0.1em 0;
+    font-size: 1.5rem;
+}
+
+#p2-time,
+#p1-time {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 #turn {
