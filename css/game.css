@@ -1,0 +1,155 @@
+#time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#time p {
+    margin: 10px 15px;
+}
+
+#gameboard{
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 0px #5e6491;
+}
+
+#play-area{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding: 0 16px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #ffffff;
+}
+
+.column{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+    background-color: #777eaf;
+}
+
+.column:hover{
+    background-color:#5e6491;
+    cursor: pointer;
+}
+
+.slot{
+    height: 45px;
+    width: 45px;
+    margin: 5px 0;
+    border-radius: 25px;
+    background-color: #a1a6ca;
+}
+
+.slot.p1 {
+    background-color: #f7f77b;
+}
+
+.slot.p2 {
+    background-color: #55e7e7;
+}
+
+#divider{
+    height: 10px;
+    background-color: #5e6491;
+}
+
+#menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 0 0 20px 20px;
+    background-color: #ffffff;
+    font-size: 17px;
+    color: #0F8FAF;
+}
+
+#game-over {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 2;
+}
+
+#winner {
+    margin: 0 0 6px 0;
+    font-size: 1.2rem;
+}
+
+#reset {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5e6491;
+    color: #f0ffff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot{
+    height: 40px;
+    width: 40px;
+    margin: 3px;
+    border-radius: 25px;
+}
+
+.dot.player-one {
+    background-color: #f7f77b;
+}
+
+.dot.player-two {   
+    background-color:#55e7e7;
+}
+
+#turn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border: 5px solid #f7f77b;
+    border-radius: 10px;
+    color: #5e6491;
+    font-weight: 700;
+}
+
+.btn {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0.5em 0;
+    border-radius: 10px; 
+    border-width: 0px; 
+    padding: 8px;
+    font-size: 1.5em;
+    background-color: #5e6491;
+    color: #f0ffff;
+}
+
+.disabled {
+    color: #b8b8b8;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
