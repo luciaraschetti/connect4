@@ -7,6 +7,7 @@ var columnsHTML = null;
 var turnHTML = null;
 var turnHTMLText = null;
 var popup = null;
+var popupMessage = null;
 var popupWinner = null;
 var board = null;
 var turn = null;
@@ -22,8 +23,14 @@ var twoPlayerBoard = [
 ];
 
 var displayPopup = function(playerName) {
-    popupWinner.innerHTML = playerName;
     popup.className = ' ';
+    if(playerName) {
+        popupWinner.innerHTML = playerName;
+        popupMessage.innerHTML = 'WINS';
+    } else {
+        popupWinner.innerHTML = 'Nobody wins...';
+        popupMessage.innerHTML = 'It\'s a TIE!';
+    }
 }
 
 //checks the 4 possible scenarios for a win
@@ -80,7 +87,7 @@ var checkDraw =  function() {
         }
     }
     if(isFull) {
-        console.log('It\'s a tie!');
+        displayPopup(null);
     }
 }
 
@@ -116,6 +123,7 @@ window.onload = function() {
     turnHTML = document.getElementById('turn');
     turnHTMLText = document.getElementById('turn-text');
     popup = document.getElementById('popup');
+    popupMessage = document.getElementById('message');
     popupWinner = document.getElementById('winner');
     getPlayerNames();
     turn = Math.random() > 0.5 ? 'p1' : 'p2';
