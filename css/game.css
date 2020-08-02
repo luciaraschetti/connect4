@@ -33,6 +33,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     border-radius: 20px;
 }
 
@@ -69,11 +70,11 @@
 }
 
 .slot.p1 {
-    background-color: #f7f77b !important;
+    background-color: #f7f77b;
 }
 
 .slot.p2 {
-    background-color: #55e7e7 !important;
+    background-color: #55e7e7;
 }
 
 #divider{
@@ -97,32 +98,6 @@
     color: #0F8FAF;
 }
 
-#game-over {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 2;
-}
-
-#winner {
-    margin: 0 0 6px 0;
-    font-size: 1.2rem;
-}
-
-#reset {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    border: none;
-    border-radius: 8px;
-    background-color: #5e6491;
-    color: #f0ffff;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
 
 .player {
     display: flex;
@@ -146,7 +121,6 @@
 }
 
 #turn {
-    background-color:  #f7f77b;
     border: 8px dashed #a1a6cad2;
     padding: 0.4em;
 }
@@ -173,12 +147,64 @@
     color: #f0ffff;
 }
 
+#win {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-bottom: 3.5em;
+    padding: 0.5em 3em;
+    border-radius: 15px;
+    background-color: #ffffff;
+    font-size: 1.5rem;
+    animation: bounce 1.5s;
+}
+
+#win p {
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+#win p:nth-child(2) {
+    letter-spacing: 0.2em;
+    font-size: 1.5rem;
+}
+
+#reset {
+    margin-top: 1em;
+    padding: 0.3em 1em;
+    border: none;
+    border-radius: 8px;
+    background-color: #5e6491;
+    font-size: 1.1rem;
+    color: #f0ffff;
+    cursor: pointer;
+}
+
 .switch-p1 {
-    transform: rotateY(180deg) !important;
+    transform: rotateY(180deg);
     transition: 0.3s;
 }
 
 .switch-p2 {
-    transform: rotateY(360deg) !important;
+    transform: rotateY(360deg);
     transition: 0.3s;
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-115px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+    80% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
