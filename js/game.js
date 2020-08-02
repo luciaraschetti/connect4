@@ -1,18 +1,25 @@
 'use strict'
 
+var p1 = null;
+var p2 = null;
 var p1Name = null;
 var p2Name = null;
+var p1Timer = null;
+var p2Timer = null;
+var globalTimer = null;
 var boardHTML = null;
 var columnsHTML = null;
 var turnHTML = null;
 var turnHTMLText = null;
+var p1TimerHTML = null;
+var p2TimerHTML = null;
+var globalTimerHTML = null;
 var popup = null;
 var popupMessage = null;
 var popupWinner = null;
 var board = null;
 var turn = null;
-var p1 = null;
-var p2 = null;
+var lastUpdatedTime = new Date().getTime();
 
 var twoPlayerBoard = [
     [null, null, null, null, null, null],
@@ -114,12 +121,22 @@ var flipTurn = function() {
 
 var toggleTurn = function() {
     turn = (turn === 'p1') ? 'p2' : 'p1';
+    if(turn === 'p1') {
+        p2Timer.stopTimer();
+        p1Timer.startTimer();
+    } else {
+        p1Timer.stopTimer();
+        p2Timer.startTimer();
+    }
     flipTurn();
 }
 
 window.onload = function() {
     p1Name = document.getElementById('p1-name');
     p2Name = document.getElementById('p2-name');
+    p1TimerHTML = document.getElementById('p1-time');
+    p2TimerHTML = document.getElementById('p2-time');
+    globalTimerHTML = document.getElementById('time');
     columnsHTML = document.getElementsByClassName('column');
     boardHTML = document.getElementById('play-area');
     turnHTML = document.getElementById('turn');
@@ -130,6 +147,10 @@ window.onload = function() {
     getPlayerNames();
     p1 = new Player(p1Name.innerHTML.slice(0, -5));
     p2 = new Player(p2Name.innerHTML.slice(0, -5));
+    p1Timer = new Timer(p1TimerHTML, 0, lastUpdatedTime, 0);
+    p2Timer = new Timer(p2TimerHTML, 0, lastUpdatedTime, 0);
+    globalTimer = new Timer(globalTimerHTML, 0, lastUpdatedTime, 0); 
+    globalTimer.startTimer();
     turn = Math.random() > 0.5 ? 'p1' : 'p2';
     board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
     board.render();
