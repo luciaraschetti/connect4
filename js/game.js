@@ -19,8 +19,8 @@ var twoPlayerBoard = [
     [null, null, null, null, null, null]
 ];
 
-//checks the 4 possible scenarios for a win or if the board is full for a draw
-var checkGameStatus = function() {
+//checks the 4 possible scenarios for a win
+var checkWin = function() {
     //check vertical placement
     for(var i = 0; i < board.board.length; i++) {
         for(var j = 0; j < 4; j++) {
@@ -59,6 +59,21 @@ var checkGameStatus = function() {
                 }
             }
         }
+    }
+}
+
+//checks if board is full for a draw
+var checkDraw =  function() {
+    for(var i = 0; i < board.board.length; i++) {
+        if(board.board[i].includes(null)) {
+            var isFull = false
+            return;
+        } else {
+            isFull = true;
+        }
+    }
+    if(isFull) {
+        console.log('It\'s a tie!');
     }
 }
 
