@@ -159,6 +159,7 @@
     background-color: #ffffff;
     font-size: 1.5rem;
     animation: bounce 1.5s;
+    z-index: 1;
 }
 
 #popup p {
@@ -190,6 +191,10 @@
 .switch-p2 {
     transform: rotateY(360deg);
     transition: 0.3s;
+}
+
+.blur {
+    filter: blur(2px);
 }
 
 @keyframes bounce {

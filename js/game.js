@@ -57,7 +57,6 @@ var stopTimers = function() {
 
 var displayPopup = function(playerName) {
     gameOver = true;
-    boardHTML.className = 'disabled';
     popup.className = ' ';
     if(playerName) {
         playerName = (playerName === 'p1') ? p1.name : p2.name;
@@ -67,6 +66,7 @@ var displayPopup = function(playerName) {
         popupWinner.innerHTML = 'Nobody wins...';
         popupMessage.innerHTML = 'It\'s a TIE!';
     }
+    boardHTML.className = ' disabled blur'
     stopTimers();
 }
 
