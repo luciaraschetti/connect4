@@ -167,8 +167,8 @@
 }
 
 #popup p:nth-child(2) {
-    letter-spacing: 0.2em;
     font-size: 1.5rem;
+    letter-spacing: 0.2em;
 }
 
 #reset {

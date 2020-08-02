@@ -11,6 +11,8 @@ var popupMessage = null;
 var popupWinner = null;
 var board = null;
 var turn = null;
+var p1 = null;
+var p2 = null;
 
 var twoPlayerBoard = [
     [null, null, null, null, null, null],
@@ -25,6 +27,7 @@ var twoPlayerBoard = [
 var displayPopup = function(playerName) {
     popup.className = ' ';
     if(playerName) {
+        playerName = (playerName === 'p1') ? p1.name : p2.name;
         popupWinner.innerHTML = playerName;
         popupMessage.innerHTML = 'WINS';
     } else {
@@ -112,7 +115,6 @@ var flipTurn = function() {
 var toggleTurn = function() {
     turn = (turn === 'p1') ? 'p2' : 'p1';
     flipTurn();
-    console.log(turn);
 }
 
 window.onload = function() {
@@ -126,6 +128,8 @@ window.onload = function() {
     popupMessage = document.getElementById('message');
     popupWinner = document.getElementById('winner');
     getPlayerNames();
+    p1 = new Player(p1Name.innerHTML.slice(0, -5));
+    p2 = new Player(p2Name.innerHTML.slice(0, -5));
     turn = Math.random() > 0.5 ? 'p1' : 'p2';
     board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
     board.render();
