@@ -18,6 +18,7 @@ class Board {
         for(var i = 0; i < this.board[columnId].length; i++) {
             if(!this.board[columnId][i]) {
                 this.board[columnId][i] = turn;
+                checkGameStatus();
                 toggleTurn();
                 this.render();
                 break;
