@@ -36,6 +36,7 @@ var twoPlayerBoard = [
 var resetGame = function() {
     gameOver = false;
     popup.className = 'hidden';
+    boardHTML.className = '';
     board.resetBoard();
     board.render();
     resetTimers();
@@ -56,6 +57,7 @@ var stopTimers = function() {
 
 var displayPopup = function(playerName) {
     gameOver = true;
+    boardHTML.className = 'disabled';
     popup.className = ' ';
     if(playerName) {
         playerName = (playerName === 'p1') ? p1.name : p2.name;
