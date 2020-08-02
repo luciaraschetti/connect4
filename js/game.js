@@ -152,6 +152,7 @@ window.onload = function() {
     globalTimer = new Timer(globalTimerHTML, 0, lastUpdatedTime, 0); 
     globalTimer.startTimer();
     turn = Math.random() > 0.5 ? 'p1' : 'p2';
+    toggleTurn();
     board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
     board.render();
     flipTurn();
