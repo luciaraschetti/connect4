@@ -18,9 +18,12 @@ var popup = null;
 var popupMessage = null;
 var popupWinner = null;
 var resetBtn = null;
+var saveBtn = null;
 var board = null;
 var turn = null;
 var lastUpdatedTime = new Date().getTime();
+var savedGames = [];
+var savedTimers = [];
 var gameOver = false;
 
 var twoPlayerBoard = [
@@ -68,6 +71,22 @@ var displayPopup = function(playerName) {
     }
     boardHTML.className = ' disabled blur'
     stopTimers();
+}
+
+var getDate = function() {
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    return day + '/' + month + '/' + year;
+}
+
+var saveGame = function() {
+    savedGames.push({currentBoard: board.board, p1: p1, p2: p2, turn: turn, date: getDate()});
+    savedTimers.push({p1: p1Timer, p2: p2Timer, globalTime: globalTimer});
+    localStorage['savedGames'] = JSON.stringify(savedGames);
+    localStorage['savedTimers'] = JSON.stringify(savedTimers);
+    console.log('Game: Saved');
 }
 
 //checks the 4 possible scenarios for a win
@@ -161,6 +180,10 @@ var toggleTurn = function() {
 }
 
 window.onload = function() {
+    //data persistence
+    savedGames = JSON.parse(localStorage['savedGames'] || '[]');
+    savedTimers = JSON.parse(localStorage['savedTimers'] || '[]');
+
     p1Name = document.getElementById('p1-name');
     p2Name = document.getElementById('p2-name');
     p1TimerHTML = document.getElementById('p1-time');
@@ -174,6 +197,7 @@ window.onload = function() {
     popupMessage = document.getElementById('message');
     popupWinner = document.getElementById('winner');
     document.getElementById('reset').addEventListener('click', resetGame);
+    document.getElementById('save').addEventListener('click', saveGame);
     getPlayerNames();
     p1 = new Player(p1Name.innerHTML.slice(0, -5));
     p2 = new Player(p2Name.innerHTML.slice(0, -5));

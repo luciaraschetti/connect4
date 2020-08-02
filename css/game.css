@@ -183,6 +183,23 @@
     cursor: pointer;
 }
 
+#save {
+    align-self: flex-end;
+    margin: 0.5em 1em;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: #52577e;
+    cursor: pointer;
+}
+
+#save:hover,
+#save:focus {
+    outline: none;
+    border-bottom: 2px solid #52577e;
+}
+
 .switch-p1 {
     transform: rotateY(180deg);
     transition: 0.3s;
