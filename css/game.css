@@ -147,7 +147,7 @@
     color: #f0ffff;
 }
 
-#win {
+#popup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,12 +161,12 @@
     animation: bounce 1.5s;
 }
 
-#win p {
+#popup p {
     margin: 0.5em 0;
     padding: 0;
 }
 
-#win p:nth-child(2) {
+#popup p:nth-child(2) {
     letter-spacing: 0.2em;
     font-size: 1.5rem;
 }

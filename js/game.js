@@ -6,6 +6,8 @@ var boardHTML = null;
 var columnsHTML = null;
 var turnHTML = null;
 var turnHTMLText = null;
+var popup = null;
+var popupWinner = null;
 var board = null;
 var turn = null;
 
@@ -19,6 +21,11 @@ var twoPlayerBoard = [
     [null, null, null, null, null, null]
 ];
 
+var displayPopup = function(playerName) {
+    popupWinner.innerHTML = playerName;
+    popup.className = ' ';
+}
+
 //checks the 4 possible scenarios for a win
 var checkWin = function() {
     //check vertical placement
@@ -27,7 +34,7 @@ var checkWin = function() {
             if(board.board[i][j]) {
                 if(board.board[i][j] === (board.board[i][j + 1]) && board.board[i][j] === (board.board[i][j + 2]) && 
                 board.board[i][j] === (board.board[i][j + 3])) {
-                    console.log('game over vertical ' + board.board[i][j]);
+                    displayPopup(board.board[i][j]);
                 }
             }
         }
@@ -39,12 +46,12 @@ var checkWin = function() {
                 //check horizontal placement
                 if(board.board[i][j] === (board.board[i + 1][j]) && board.board[i][j] === (board.board[i + 2][j]) && 
                 board.board[i][j] === (board.board[i + 3][j])) {
-                    console.log('game over horizontal ' + board.board[i][j]);
+                    displayPopup(board.board[i][j]);
                 }
                 //check diagonal increment placement
                 if(board.board[i][j] === (board.board[i + 1][j + 1]) && board.board[i][j] === (board.board[i + 2][j + 2]) && 
                 board.board[i][j] === (board.board[i + 3][j + 3])) {
-                    console.log('game over diagonal inc ' + board.board[i][j]);
+                    displayPopup(board.board[i][j]);
                 }
             }
         }
@@ -55,7 +62,7 @@ var checkWin = function() {
             if (board.board[i][j]) {
                 if (board.board[i][j] === (board.board[i + 1][j - 1]) && board.board[i][j] === (board.board[i + 2][j - 2]) && 
                 board.board[i][j] === (board.board[i + 3][j - 3]) ) {
-                    console.log('game over diagonal dec ' + board.board[i][j]);
+                    displayPopup(board.board[i][j]);
                 }
             }
         }
@@ -108,6 +115,8 @@ window.onload = function() {
     boardHTML = document.getElementById('play-area');
     turnHTML = document.getElementById('turn');
     turnHTMLText = document.getElementById('turn-text');
+    popup = document.getElementById('popup');
+    popupWinner = document.getElementById('winner');
     getPlayerNames();
     turn = Math.random() > 0.5 ? 'p1' : 'p2';
     board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
