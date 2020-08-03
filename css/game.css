@@ -77,6 +77,10 @@
     background-color: #55e7e7;
 }
 
+.slot.p3 {
+    background-color: #a055e7;
+}
+
 #divider{
     width: 100%;
     padding: 0.5em;
@@ -115,17 +119,18 @@
 }
 
 #p2-time,
-#p1-time {
+#p1-time,
+#p3-time {
     font-size: 1.2rem;
     font-weight: 700;
 }
 
-#turn {
-    border: 8px dashed #a1a6cad2;
+.turn {
+    border: 7px dashed #a1a6cad2;
     padding: 0.4em;
 }
 
-#turn p {
+.turn p {
     margin: 0;
     padding: 0.3em 0.4em;
     border-radius: 50%;
@@ -207,6 +212,11 @@
 
 .switch-p2 {
     transform: rotateY(360deg);
+    transition: 0.3s;
+}
+
+.switch-p3 {
+    transform: rotateY(0deg);
     transition: 0.3s;
 }
 
