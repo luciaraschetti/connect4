@@ -7,9 +7,19 @@ var savedGamesHTML = null;
 var p1HTML = null;
 var p2HTML = null;
 var dateHTML = null;
+var listSection = null;
 var empty = null;
+var arrGameLI = null;
+var savedGameIndex = null;
 var start = 0;
 var end = 5;
+
+
+var selectGame = function(e) {
+    var gameIndex = arrGameLI.indexOf(e.target);
+    savedGameIndex = gameIndex;
+    localStorage['gameIndex'] = JSON.stringify(savedGameIndex);
+}
 
 //Changes current ul 'page' by modifying the start & end parameters of the displayed games section
 var navigation = function(e) {
@@ -36,7 +46,7 @@ var displayButtons = function() {
 //Displays only the first 5 saved games by sectioning an array made from gameLI
 //and showing only the <li> that are a part of that section
 var loadSavedGamesData = function() {
-    var listSection = Array.from(gameLI).slice(start, end);
+    listSection = arrGameLI.slice(start, end);
 
     for(var i = 0; i < savedGames.length; i++) {
         p1HTML[i].innerHTML = savedGames[i].p1.name;
@@ -76,10 +86,12 @@ var renderList = function() {
         html += '</li>';
     }
     savedGamesHTML.innerHTML = html;
+    arrGameLI = Array.from(gameLI);
     loadSavedGamesData();
 }
 
 window.onload = function() {
+    savedGameIndex = JSON.parse(localStorage['gameIndex'] || '[]');
     savedGames = JSON.parse(localStorage['savedGames']);
     savedGamesHTML = document.getElementById('games');
     gameLI = document.getElementsByClassName('game');
@@ -92,4 +104,5 @@ window.onload = function() {
     btnNext.addEventListener('click', navigation);
     btnBack.addEventListener('click', navigation);
     (savedGames.length > 0) ? renderList() : showEmptyList();
+    arrGameLI.forEach(elem => elem.addEventListener('click', selectGame));
 }
