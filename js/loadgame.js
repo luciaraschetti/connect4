@@ -6,8 +6,8 @@ var p1HTML = null;
 var p2HTML = null;
 var dateHTML = null;
 
-//Displays only the first 5 saved games by sectioning an array made from 
-//
+//Displays only the first 5 saved games by sectioning an array made from gameLI
+//and showing only the <li> that are a part of that section
 var loadSavedGamesData = function() {
     var start = 0;
     var end = 5;
