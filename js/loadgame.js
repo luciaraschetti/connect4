@@ -5,13 +5,13 @@ var savedGamesHTML = null;
 var p1HTML = null;
 var p2HTML = null;
 var dateHTML = null;
+var empty = null;
 
 //Displays only the first 5 saved games by sectioning an array made from gameLI
 //and showing only the <li> that are a part of that section
 var loadSavedGamesData = function() {
     var start = 0;
     var end = 5;
-    savedGames = JSON.parse(localStorage['savedGames']);
     var listSection = Array.from(gameLI).slice(start, end);
 
     for(var i = 0; i < savedGames.length; i++) {
@@ -44,14 +44,16 @@ var renderList = function() {
         html += '</li>';
     }
     savedGamesHTML.innerHTML = html;
+    loadSavedGamesData();
 }
 
 window.onload = function() {
+    savedGames = JSON.parse(localStorage['savedGames']);
     savedGamesHTML = document.getElementById('games');
     gameLI = document.getElementsByClassName('game');
     p1HTML = document.getElementsByClassName('game-info p1');
     p2HTML = document.getElementsByClassName('game-info p2');
     dateHTML = document.getElementsByClassName('date');
-    renderList();
-    loadSavedGamesData();
+    empty = document.getElementById('empty');
+    (savedGames.length > 0) ? renderList() : empty.className = '';
 }
