@@ -11,8 +11,7 @@ var empty = null;
 var start = 0;
 var end = 5;
 
-
-//Changes current 'page' by modifying the start & end parameters of the displayed games section
+//Changes current ul 'page' by modifying the start & end parameters of the displayed games section
 var navigation = function(e) {
     var btn = e.target.id;
     if(btn === 'next') {
@@ -25,6 +24,13 @@ var navigation = function(e) {
         }
     }
     loadSavedGamesData();
+}
+
+//Enables/disables Next button depending on whether the current ul 'page' is full or not
+//Disables Back button on the first ul 'page'
+var displayButtons = function() {
+    (listSection.length < 5) ? btnNext.className += ' disabled' : btnNext.className = 'navigation btn';
+    (start >= 5) ? btnBack.className = 'navigation btn' : btnBack.className += ' disabled';
 }
 
 //Displays only the first 5 saved games by sectioning an array made from gameLI
@@ -42,9 +48,17 @@ var loadSavedGamesData = function() {
         gameLI[l].className = 'game hidden';
     }
 
-    for(var j = 0; j < savedGames.length; j++) {
+    for(var j = 0; j < listSection.length; j++) {
         listSection[j].className = ' game';
     }
+
+    displayButtons();
+}
+
+var showEmptyList = function() {
+    empty.className = '';
+    btnBack.className += ' disabled';
+    btnNext.className += ' disabled';
 }
 
 var renderList = function() {
@@ -73,7 +87,9 @@ window.onload = function() {
     p2HTML = document.getElementsByClassName('game-info p2');
     dateHTML = document.getElementsByClassName('date');
     empty = document.getElementById('empty');
-    btnBack = document.getElementById('back').addEventListener('click', navigation);
-    btnNext =  document.getElementById('next').addEventListener('click', navigation);
-    (savedGames.length > 0) ? renderList() : empty.className = '';
+    btnBack = document.getElementById('back');
+    btnNext =  document.getElementById('next');
+    btnNext.addEventListener('click', navigation);
+    btnBack.addEventListener('click', navigation);
+    (savedGames.length > 0) ? renderList() : showEmptyList();
 }
