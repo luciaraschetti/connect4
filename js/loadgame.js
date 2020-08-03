@@ -1,17 +1,35 @@
 'use strict'
 
 var gameLI = null;
+var btnBack = null;
+var btnNext = null;
 var savedGamesHTML = null;
 var p1HTML = null;
 var p2HTML = null;
 var dateHTML = null;
 var empty = null;
+var start = 0;
+var end = 5;
+
+
+//Changes current 'page' by modifying the start & end parameters of the displayed games section
+var navigation = function(e) {
+    var btn = e.target.id;
+    if(btn === 'next') {
+        start += 5;
+        end += 5;
+    } else {
+        if(start >= 5) {
+            start -= 5;
+            end -= 5;
+        }
+    }
+    loadSavedGamesData();
+}
 
 //Displays only the first 5 saved games by sectioning an array made from gameLI
 //and showing only the <li> that are a part of that section
 var loadSavedGamesData = function() {
-    var start = 0;
-    var end = 5;
     var listSection = Array.from(gameLI).slice(start, end);
 
     for(var i = 0; i < savedGames.length; i++) {
@@ -55,5 +73,7 @@ window.onload = function() {
     p2HTML = document.getElementsByClassName('game-info p2');
     dateHTML = document.getElementsByClassName('date');
     empty = document.getElementById('empty');
+    btnBack = document.getElementById('back').addEventListener('click', navigation);
+    btnNext =  document.getElementById('next').addEventListener('click', navigation);
     (savedGames.length > 0) ? renderList() : empty.className = '';
 }
