@@ -179,11 +179,61 @@ var toggleTurn = function() {
     }
 }
 
+var loadSavedGame = function() {
+    var savedGameIndex = JSON.parse(localStorage['gameIndex']);
+    savedGames = JSON.parse(localStorage['savedGames']);
+    savedTimers = JSON.parse(localStorage['savedTimers']);
+    
+    board.board = savedGames[savedGameIndex].currentBoard;
+    turn = savedGames[savedGameIndex].turn;
+    p1 = savedGames[savedGameIndex].p1;
+    p2 = savedGames[savedGameIndex].p2;
+
+    p1Timer.currentTimer = savedTimers[savedGameIndex].p1.currentTimer;
+    p1Timer.lastUpdatedTime = savedTimers[savedGameIndex].p1.lastUpdatedTime;
+
+    p2Timer.currentTimer = savedTimers[savedGameIndex].p2.currentTimer;
+    p2Timer.lastUpdatedTime = savedTimers[savedGameIndex].p2.lastUpdatedTime;
+
+    globalTimer.currentTimer = savedTimers[savedGameIndex].globalTime.currentTimer;
+    globalTimer.lastUpdatedTime = savedTimers[savedGameIndex].globalTime.lastUpdatedTime;
+
+    board.render();
+    globalTimer.startTimer();
+    p1Timer.startTimer();
+    p2Timer.startTimer();
+    setTimeout(toggleTurn, 1);
+}
+
+var initialize = function() {
+    var isNewGame = JSON.parse(localStorage['newGame']);
+    board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
+    p1 = new Player('Player 1');
+    p2 = new Player('Player 2');
+    p1Timer = new Timer(p1TimerHTML, 0, lastUpdatedTime, 0);
+    p2Timer = new Timer(p2TimerHTML, 0, lastUpdatedTime, 0);
+    globalTimer = new Timer(globalTimerHTML, 0, lastUpdatedTime, 0); 
+
+    if(isNewGame) {
+        getPlayerNames();
+        p1 = new Player(p1Name.innerHTML.slice(0, -5));
+        p2 = new Player(p2Name.innerHTML.slice(0, -5));
+        turn = Math.random() > 0.5 ? 'p1' : 'p2';
+        globalTimer.startTimer();
+        toggleTurn();
+        board.render();
+        flipTurn();
+        
+    } else {
+        loadSavedGame();
+    }
+}
+
 window.onload = function() {
     //data persistence
     savedGames = JSON.parse(localStorage['savedGames'] || '[]');
     savedTimers = JSON.parse(localStorage['savedTimers'] || '[]');
-    
+
     if(window.location.href.indexOf('game.html') > -1) {
         p1Name = document.getElementById('p1-name');
         p2Name = document.getElementById('p2-name');
@@ -199,17 +249,6 @@ window.onload = function() {
         popupWinner = document.getElementById('winner');
         document.getElementById('reset').addEventListener('click', resetGame);
         document.getElementById('save').addEventListener('click', saveGame);
-        getPlayerNames();
-        p1 = new Player(p1Name.innerHTML.slice(0, -5));
-        p2 = new Player(p2Name.innerHTML.slice(0, -5));
-        p1Timer = new Timer(p1TimerHTML, 0, lastUpdatedTime, 0);
-        p2Timer = new Timer(p2TimerHTML, 0, lastUpdatedTime, 0);
-        globalTimer = new Timer(globalTimerHTML, 0, lastUpdatedTime, 0); 
-        globalTimer.startTimer();
-        turn = Math.random() > 0.5 ? 'p1' : 'p2';
-        toggleTurn();
-        board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
-        board.render();
-        flipTurn();
+        initialize();
     }
 }
