@@ -21,10 +21,6 @@ var validateForm = function() {
 
     for(var i = 0; i < formElements.length; i++) {
        if(formElements[i].value === '') {
-           formElements[i].placeholder = 'Empty field';
-           isValid = false;
-        } else {
-            
             if(formElements[i].id === 'name') {
                 if(!alphaNum.test(formElements[i].value)) {
                     formElements[i].value = '';
@@ -58,7 +54,7 @@ var validateForm = function() {
                 
                 message = formElements[i].value;
             }   
-       }
+        }
     }
 
     (isValid) ? sendEmail(name, message) : styleBtn();
