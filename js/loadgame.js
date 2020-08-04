@@ -79,6 +79,7 @@ var loadSavedGamesData = function() {
 
 var showEmptyList = function() {
     empty.className = ' ';
+    btnLoad.className += ' disabled';
     btnBack.className += ' disabled';
     btnNext.className += ' disabled';
 }
