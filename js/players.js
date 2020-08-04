@@ -7,6 +7,7 @@ var p3Tag = null;
 var btnStart = null;
 var btnAdd = null;
 var btnAddContainer = null;
+var errorMsg = null;
 var playerNames = [];
 
 var displayInput = function() {
@@ -31,18 +32,21 @@ var validateInput = function() {
     if(p3Name.className === ' ' && p3Name.value.length < 3) {
         p3Name.value = '';
         p3Name.placeholder = 'Too short!';
+        errorMsg.className = '';
         isValid = false;
     }
 
     if(p1Name.value.length < 3) {
         p1Name.value = '';
         p1Name.placeholder = 'Too short!';
+        errorMsg.className = '';
         isValid = false;
     }
 
     if(p2Name.value.length < 3) {
         p2Name.value = '';
         p2Name.placeholder = 'Too short!';
+        errorMsg.className = '';
         isValid = false;
     }
     return isValid;
@@ -60,10 +64,10 @@ var savePlayerNames = function() {
 var errorBtn = function() {
     btnStart.innerHTML = 'Invalid Names';
     btnStart.className += ' error';
-    setTimeout(erroMsg, 2000);
+    setTimeout(btnErroMsg, 2000);
 }
 
-var erroMsg = function() {
+var btnErroMsg = function() {
     btnStart.className = 'btn';
     btnStart.innerHTML = 'Start Game';
 }
@@ -83,6 +87,7 @@ window.onload = function() {
     btnStart = document.getElementById('start-btn');
     btnAdd = document.getElementById('add-player');
     btnAddContainer = document.getElementById('btn-container');
+    errorMsg = document.getElementById('error');
 
     btnAdd.addEventListener('click', function() {
         displayInput();
