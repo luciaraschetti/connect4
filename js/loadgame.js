@@ -4,6 +4,7 @@ var gameLI = null;
 var btnBack = null;
 var btnNext = null;
 var btnLoad = null;
+var btnDelete = null;
 var savedGamesHTML = null;
 var p1HTML = null;
 var p2HTML = null;
@@ -17,6 +18,14 @@ var selectedGame = -1;
 var start = 0;
 var end = 5;
 
+//Gets clicked button and uses its index as a parameter to splice 'savedGames'
+//Updates local storage with new 'savedGames' array
+var deleteGame = function(e) {
+    var btn =  Array.from(btnDelete).indexOf(e.target);
+    savedGames.splice(savedGames[btn], 1);
+    localStorage['savedGames'] = JSON.stringify(savedGames);
+    location.reload();
+}
 
 var loadGame = function() {
     var newGame = false;
@@ -97,7 +106,7 @@ var renderList = function() {
         html += '<div class="game-info p2"></div>';
         html += '<div class="game-info p3 hidden"></div>';
         html += '</div>';
-        html += '<p class="date"></p><span>Delete</span>';
+        html += '<p class="date"></p><span class="delete">Delete</span>';
         html += '</li>';
     }
     savedGamesHTML.innerHTML = html;
@@ -118,10 +127,12 @@ window.onload = function() {
     btnBack = document.getElementById('back');
     btnNext =  document.getElementById('next');
     btnLoad =  document.getElementById('load-game');
+    btnDelete = document.getElementsByClassName('delete');
     btnLoad.addEventListener('click', loadGame);
     btnNext.addEventListener('click', navigation);
     btnBack.addEventListener('click', navigation);
     (savedGames.length > 0) ? renderList() : showEmptyList();
+    Array.from(btnDelete).forEach(elem => elem.addEventListener('click', deleteGame));
     savedGameIndex = selectedGame;
     localStorage['gameIndex'] = JSON.stringify(savedGameIndex);
     arrGameLI.forEach(elem => elem.addEventListener('click', selectGame));

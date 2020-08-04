@@ -80,7 +80,7 @@
     pointer-events: none;
 }
 
-span {
+.delete {
     margin: 0.3em;
     padding: 0.1em 0.5em;
     border-radius: 15px;
@@ -89,7 +89,7 @@ span {
     transition: 0.3s;
 }
 
-span:hover {
+.delete:hover {
     background-color: #5e6491;
     color: #f1f1f1;
     transition: 0.3s;
