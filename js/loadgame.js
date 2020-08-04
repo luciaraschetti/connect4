@@ -13,6 +13,7 @@ var listSection = null;
 var empty = null;
 var arrGameLI = null;
 var savedGameIndex = null;
+var selectedGame = -1;
 var start = 0;
 var end = 5;
 
@@ -24,9 +25,10 @@ var loadGame = function() {
 }
 
 var selectGame = function(e) {
-    var gameIndex = arrGameLI.indexOf(e.target);
-    savedGameIndex = gameIndex;
+    selectedGame = arrGameLI.indexOf(e.target);
+    savedGameIndex = selectedGame;
     localStorage['gameIndex'] = JSON.stringify(savedGameIndex);
+    btnLoad.className = 'btn';
 }
 
 //Changes current ul 'page' by modifying the start & end parameters of the displayed games section
@@ -79,7 +81,6 @@ var loadSavedGamesData = function() {
 
 var showEmptyList = function() {
     empty.className = ' ';
-    btnLoad.className += ' disabled';
     btnBack.className += ' disabled';
     btnNext.className += ' disabled';
 }
@@ -121,5 +122,7 @@ window.onload = function() {
     btnNext.addEventListener('click', navigation);
     btnBack.addEventListener('click', navigation);
     (savedGames.length > 0) ? renderList() : showEmptyList();
+    savedGameIndex = selectedGame;
+    localStorage['gameIndex'] = JSON.stringify(savedGameIndex);
     arrGameLI.forEach(elem => elem.addEventListener('click', selectGame));
 }
