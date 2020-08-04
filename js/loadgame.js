@@ -97,7 +97,7 @@ var renderList = function() {
         html += '<div class="game-info p2"></div>';
         html += '<div class="game-info p3 hidden"></div>';
         html += '</div>';
-        html += '<p class="date"></p>';
+        html += '<p class="date"></p><span>Delete</span>';
         html += '</li>';
     }
     savedGamesHTML.innerHTML = html;
