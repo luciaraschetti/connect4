@@ -20,6 +20,7 @@ var p1TimerHTML = null;
 var p2TimerHTML = null;
 var p3TimerHTML = null;
 var globalTimerHTML = null;
+var p3Container = null;
 var popup = null;
 var popupMessage = null;
 var popupWinner = null;
@@ -187,16 +188,20 @@ var flipTurn = function() {
         turnHTML.className = 'switch-p1 turn slot p1';
         turnHTMLText.className = 'switch-p1';
         turnHTMLText.innerHTML = 'P1';
-        p3TurnHTML.className = 'switch-p1 turn slot p1';
-       p3TurnHTMLText.className = 'switch-p1';
-        p3TurnHTMLText.innerHTML = 'P1';
+        if(threePlayers) {
+            p3TurnHTML.className = 'switch-p1 turn slot p1';
+            p3TurnHTMLText.className = 'switch-p1';
+            p3TurnHTMLText.innerHTML = 'P1';
+        }
     } else if (turn === 'p2') {
         turnHTML.className = 'switch-p2 turn slot p2';
         turnHTMLText.className = 'switch-p2';
         turnHTMLText.innerHTML = 'P2';
-        p3TurnHTML.className = 'switch-p2 turn slot p2';
-        p3TurnHTMLText.className = 'switch-p2';
-        p3TurnHTMLText.innerHTML = 'P2';
+        if(threePlayers) {
+            p3TurnHTML.className = 'switch-p2 turn slot p2';
+            p3TurnHTMLText.className = 'switch-p2';
+            p3TurnHTMLText.innerHTML = 'P2';
+        }
     } else {
         turnHTML.className = 'switch-p3 turn slot p3';
         turnHTMLText.className = 'switch-p3';
@@ -277,8 +282,9 @@ var initialize = function() {
 
     if(savedNames[0].namep3) {
         threePlayers = true;
+        p3TurnHTML.className = 'turn slot';
+        p3Container.className = 'player';
         board = new Board(boardHTML, columnsHTML, threePlayerBoard);
-        p3TimerHTML.className = ' ';
         p3 = new Player('Player 3');
         p3Timer = new Timer(p3TimerHTML, 0, lastUpdatedTime, 0);
     }
@@ -324,6 +330,7 @@ window.onload = function() {
         turnHTMLText = document.getElementById('turn-text');
         p3TurnHTML = document.getElementById('turn-three');
         p3TurnHTMLText = document.getElementById('turn-text-three');
+        p3Container = document.getElementById('p3-container');
         popup = document.getElementById('popup');
         popupMessage = document.getElementById('message');
         popupWinner = document.getElementById('winner');
