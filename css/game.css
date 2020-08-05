@@ -6,10 +6,9 @@
 }
 #general-time {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
     margin: 0 0 0.5em 0;
     padding: 0;
     border-radius: 13px;
@@ -22,10 +21,8 @@
 }
 
 #time {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    margin: 0;
+    padding: 1em;
 }
 
 #gameboard{
@@ -35,11 +32,14 @@
     justify-content: center;
     position: relative;
     border-radius: 20px;
+    width: 100%;
 }
 
 #play-area{
     display: flex;
     flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
     flex-grow: 1;
     padding: 0.5em 1em;
     border-radius: 20px 20px 0 0;
@@ -51,6 +51,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     flex-grow: 1;
     padding: 0.5em;
     border-radius: 25px;
@@ -63,8 +64,8 @@
 }
 
 .slot{
-    padding: 1.5em;
     margin: 0.3em 0;
+    padding: 2em;
     border-radius: 50%;
     background-color: #a1a6ca;
 }
@@ -82,8 +83,8 @@
 }
 
 #divider{
-    width: 100%;
     padding: 0.5em;
+    width: 100%;
     box-sizing: border-box;
     background-color: #5e6491;
 }
@@ -161,6 +162,7 @@
     margin-bottom: 3.5em;
     padding: 0.5em 3em;
     border-radius: 15px;
+    border: 2px solid #52577e;
     background-color: #ffffff;
     font-size: 1.5rem;
     animation: bounce 1.5s;
@@ -246,44 +248,17 @@
     }
 }
 
-@media only screen and (max-width: 500px) {
-    #game {
-        width: 100vw;
-    }
-
-    #gameboard {
-        width: 100vw;
-    }
-    
-    #play-area {
-        padding: 0;
-        width: 100vw;
-    }
-
-    .column{
-        padding: 0;
-        margin: 0;
-    }
-
-    .slot{
-        padding: 0.8em;
-        margin: 0.2em 0.1em;
-    }
-
-    .player p {
-        font-size: 1.2rem;
-    }
-
+@media only screen and (max-width: 600px) {
     #menu {
         flex-direction: column;
     }
-
-    .turn {
-        margin: 0;
-        padding: 0.4em;
+    #game {
+        width: 95vw;
     }
-
-    .turn p {
-        padding: 0.3em;
+    .slot {   
+        padding: 4vw;
+    }
+    .column {
+        padding: 2.2vw;
     }
 }
