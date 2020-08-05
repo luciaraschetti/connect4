@@ -33,6 +33,7 @@ var savedGameIndex = null;
 var savedGames = [];
 var savedTimers = [];
 var savedNames = [];
+var saving = false;
 var isNewGame = null;
 var gameOver = false;
 var threePlayers = false;
@@ -61,13 +62,18 @@ var threePlayerBoard = [
 ];
 
 var resetGame = function() {
-    gameOver = false;
     popup.className = 'hidden';
     boardHTML.className = '';
-    board.resetBoard();
-    board.render();
-    resetTimers();
-    setTimeout(toggleTurn, 1);
+    if(saving) {
+        saving = false;
+        startTimers();
+    } else {
+        gameOver = false;
+        board.resetBoard();
+        board.render();
+        resetTimers();
+        setTimeout(toggleTurn, 1);
+    }
 }
 
 var resetTimers = function() {
@@ -75,6 +81,13 @@ var resetTimers = function() {
     p1Timer.resetTimer();
     p2Timer.resetTimer();
     if(threePlayers) {p3Timer.resetTimer();}
+}
+
+var startTimers = function() {
+    globalTimer.startTimer();
+    p1Timer.startTimer();
+    p2Timer.startTimer();
+    if(threePlayers) {p3Timer.startTimer();}
 }
 
 var stopTimers = function() {
@@ -85,17 +98,24 @@ var stopTimers = function() {
 }
 
 var displayPopup = function(playerName) {
-    gameOver = true;
     popup.className = ' ';
-    if(playerName) {
-        playerName = (playerName === 'p1') ? p1.name : p2.name;
-        popupWinner.innerHTML = playerName;
-        popupMessage.innerHTML = 'WINS';
-    } else {
-        popupWinner.innerHTML = 'Nobody wins...';
-        popupMessage.innerHTML = 'It\'s a TIE!';
-    }
     boardHTML.className = ' disabled blur'
+    if(saving) {
+        popupWinner.innerHTML = '';
+        popupMessage.innerHTML = 'Game saved!';
+        resetBtn.innerHTML = 'OK';
+    } else {
+        gameOver = true;
+        if(playerName) {
+            playerName = (playerName === 'p1') ? p1.name : p2.name;
+            popupWinner.innerHTML = playerName;
+            popupMessage.innerHTML = 'WINS';
+        } else {
+            popupWinner.innerHTML = 'Nobody wins...';
+            popupMessage.innerHTML = 'It\'s a TIE!';
+        }
+        resetBtn.innerHTML = 'Play Again';
+    }
     stopTimers();
 }
 
@@ -117,7 +137,8 @@ var saveGame = function() {
     }
     localStorage['savedGames'] = JSON.stringify(savedGames);
     localStorage['savedTimers'] = JSON.stringify(savedTimers);
-    console.log('Game: Saved');
+    saving = true;
+    displayPopup(null);
 }
 
 //checks the 4 possible scenarios for a win
@@ -187,7 +208,6 @@ var getPlayerNames = function() {
             p3Name.innerHTML = savedNames[0].namep3 + ' (P3)';
             threePlayers = true;
         }
-        //localStorage.removeItem('playersNames');
     } else {
         p1Name.innerHTML = savedGames[savedGameIndex].p1.name + ' (P1)';
         p2Name.innerHTML = savedGames[savedGameIndex].p2.name + ' (P2)';
@@ -342,10 +362,11 @@ window.onload = function() {
         p3TurnHTML = document.getElementById('turn-three');
         p3TurnHTMLText = document.getElementById('turn-text-three');
         p3Container = document.getElementById('p3-container');
+        resetBtn = document.getElementById('reset');
         popup = document.getElementById('popup');
         popupMessage = document.getElementById('message');
         popupWinner = document.getElementById('winner');
-        document.getElementById('reset').addEventListener('click', resetGame);
+        resetBtn.addEventListener('click', resetGame);
         document.getElementById('save').addEventListener('click', saveGame);
         isNewGame = JSON.parse(localStorage['newGame']);
         initialize();

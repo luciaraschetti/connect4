@@ -191,18 +191,23 @@
 #save {
     align-self: flex-end;
     margin: 0.5em 1em;
-    padding: 0;
+    padding: 0.2em;
+    border-radius: 10px;
     border: none;
-    border-bottom: 2px solid transparent;
-    background: none;
+    border: 2px solid #52577e;
+    background: #f1f1f1;
     color: #52577e;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 #save:hover,
 #save:focus {
     outline: none;
-    border-bottom: 2px solid #52577e;
+    border: 2px solid #f1f1f1;
+    background-color: #52577e;
+    color: #f1f1f1;
+    transition: 0.3s;
 }
 
 .switch-p1 {
