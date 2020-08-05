@@ -275,6 +275,7 @@ var loadSavedGame = function() {
     p2Timer.lastUpdatedTime = savedTimers[savedGameIndex].p2.lastUpdatedTime;
     globalTimer.currentTimer = savedTimers[savedGameIndex].globalTime.currentTimer;
     globalTimer.lastUpdatedTime = savedTimers[savedGameIndex].globalTime.lastUpdatedTime;
+    
     if(threePlayers) {
        p3Timer.currentTimer = savedTimers[savedGameIndex].p3.currentTimer;
        p3Timer.lastUpdatedTime = savedTimers[savedGameIndex].p3.lastUpdatedTime;
@@ -325,7 +326,7 @@ window.onload = function() {
     //data persistence
     savedGames = JSON.parse(localStorage['savedGames'] || '[]');
     savedTimers = JSON.parse(localStorage['savedTimers'] || '[]');
-    savedGameIndex = JSON.parse(localStorage['gameIndex']);
+    savedGameIndex = JSON.parse(localStorage['gameIndex'] || '[]');
     if(window.location.href.indexOf('game.html') > -1) {
         p1Name = document.getElementById('p1-name');
         p2Name = document.getElementById('p2-name');
