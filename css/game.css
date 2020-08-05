@@ -240,3 +240,45 @@
         transform: translateY(0);
     }
 }
+
+@media only screen and (max-width: 500px) {
+    #game {
+        width: 100vw;
+    }
+
+    #gameboard {
+        width: 100vw;
+    }
+    
+    #play-area {
+        padding: 0;
+        width: 100vw;
+    }
+
+    .column{
+        padding: 0;
+        margin: 0;
+    }
+
+    .slot{
+        padding: 0.8em;
+        margin: 0.2em 0.1em;
+    }
+
+    .player p {
+        font-size: 1.2rem;
+    }
+
+    #menu {
+        flex-direction: column;
+    }
+
+    .turn {
+        margin: 0;
+        padding: 0.4em;
+    }
+
+    .turn p {
+        padding: 0.3em;
+    }
+}
