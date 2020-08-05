@@ -29,9 +29,11 @@ var saveBtn = null;
 var board = null;
 var turn = null;
 var lastUpdatedTime = new Date().getTime();
+var savedGameIndex = null;
 var savedGames = [];
 var savedTimers = [];
 var savedNames = [];
+var isNewGame = null;
 var gameOver = false;
 var threePlayers = false;
 
@@ -177,10 +179,23 @@ var checkDraw =  function() {
 }
 
 var getPlayerNames = function() {
-    savedNames = JSON.parse(localStorage['playersNames']);
-    p1Name.innerHTML = savedNames[0].namep1 + ' (P1)';
-    p2Name.innerHTML = savedNames[0].namep2 + ' (P2)';
-    if(savedNames[0].namep3) {p3Name.innerHTML = savedNames[0].namep3 + ' (P3)';}
+    if(isNewGame) {
+        savedNames = JSON.parse(localStorage['playersNames']);
+        p1Name.innerHTML = savedNames[0].namep1 + ' (P1)';
+        p2Name.innerHTML = savedNames[0].namep2 + ' (P2)';
+        if(savedNames[0].namep3) {
+            p3Name.innerHTML = savedNames[0].namep3 + ' (P3)';
+            threePlayers = true;
+        }
+        localStorage.removeItem('playersNames');
+    } else {
+        p1Name.innerHTML = savedGames[savedGameIndex].p1.name + ' (P1)';
+        p2Name.innerHTML = savedGames[savedGameIndex].p2.name + ' (P2)';
+        if(savedGames[savedGameIndex].p3) {
+            p3Name.innerHTML = savedGames[savedGameIndex].p3.name + ' (P3)';
+            threePlayers = true;
+        }
+    }
 }
 
 var flipTurn = function() {
@@ -245,7 +260,6 @@ var toggleTurn = function() {
 }
 
 var loadSavedGame = function() {
-    var savedGameIndex = JSON.parse(localStorage['gameIndex']);
     savedGames = JSON.parse(localStorage['savedGames']);
     savedTimers = JSON.parse(localStorage['savedTimers']);
 
@@ -275,13 +289,10 @@ var loadSavedGame = function() {
 }
 
 var initialize = function() {
-    var isNewGame = JSON.parse(localStorage['newGame']);
     getPlayerNames();
-
     board = new Board(boardHTML, columnsHTML, twoPlayerBoard);
 
-    if(savedNames[0].namep3) {
-        threePlayers = true;
+    if(threePlayers) {
         p3TurnHTML.className = 'turn slot';
         p3Container.className = 'player';
         board = new Board(boardHTML, columnsHTML, threePlayerBoard);
@@ -314,8 +325,7 @@ window.onload = function() {
     //data persistence
     savedGames = JSON.parse(localStorage['savedGames'] || '[]');
     savedTimers = JSON.parse(localStorage['savedTimers'] || '[]');
-    savedNames = JSON.parse(localStorage['PlayersNames'] || '[]');
-
+    savedGameIndex = JSON.parse(localStorage['gameIndex']);
     if(window.location.href.indexOf('game.html') > -1) {
         p1Name = document.getElementById('p1-name');
         p2Name = document.getElementById('p2-name');
@@ -336,6 +346,7 @@ window.onload = function() {
         popupWinner = document.getElementById('winner');
         document.getElementById('reset').addEventListener('click', resetGame);
         document.getElementById('save').addEventListener('click', saveGame);
+        isNewGame = JSON.parse(localStorage['newGame']);
         initialize();
     }
 }
