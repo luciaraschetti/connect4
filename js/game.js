@@ -187,7 +187,7 @@ var getPlayerNames = function() {
             p3Name.innerHTML = savedNames[0].namep3 + ' (P3)';
             threePlayers = true;
         }
-        localStorage.removeItem('playersNames');
+        //localStorage.removeItem('playersNames');
     } else {
         p1Name.innerHTML = savedGames[savedGameIndex].p1.name + ' (P1)';
         p2Name.innerHTML = savedGames[savedGameIndex].p2.name + ' (P2)';
