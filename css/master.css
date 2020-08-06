@@ -21,9 +21,68 @@ body {
 
 h1 {
     flex-grow: 1;
+    font-family: 'Fredoka One', sans-serif;
     font-size: 4rem;
-    letter-spacing: 0.35rem;
+    letter-spacing: 0.25rem;
     text-align: center;
+}
+
+.letter {
+    position: relative;
+    text-shadow:    6px 6px        #f1f1f1, 
+                    5.75px 5.75px  #f1f1f1, 
+                    5.5px 5.5px    #f1f1f1, 
+                    5.25px 5.25px  #f1f1f1,
+                    5px 5px        #f1f1f1, 
+                    4.75px 4.75px  #f1f1f1, 
+                    4.5px 4.5px    #f1f1f1, 
+                    4.25px 4.25px  #f1f1f1,
+                    4px 4px        #f1f1f1,
+                    3.75px 3.75px  #f1f1f1,
+                    3.5px 3.5px    #f1f1f1,
+                    3.25px 3.25px  #f1f1f1,
+                    3px 3px        #f1f1f1,
+                    2.75px 2.75px  #f1f1f1,
+                    2.5px 2.5px    #f1f1f1,
+                    2.25px 2.25px  #f1f1f1,
+                    2px 2px        #f1f1f1,
+                    1.75px 1.75px  #f1f1f1,
+                    1.5px 1.5px    #f1f1f1,
+                    1.25px 1.25px  #f1f1f1,
+                    1px 1px        #f1f1f1,
+                    0.75px 0.75px  #f1f1f1,
+                    0.5px 0.5px    #f1f1f1,
+                    0.25px 0.25px  #f1f1f1;
+    color: #5e6491;
+    animation: scatter 0.4s;
+}
+
+.letter:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.letter:nth-child(3) {
+    animation-delay: 0.25s;
+}
+
+.letter:nth-child(4) {
+    animation-delay: 0.35s;
+}
+
+.letter:nth-child(5) {
+    animation-delay: 0.45s;
+}
+
+.letter:nth-child(6) {
+    animation-delay: 0.55s;
+}
+
+.letter:nth-child(7) {
+    animation-delay: 0.65s;
+}
+
+.letter:nth-child(8) {
+    animation-delay: 0.75s;
 }
 
 .footer {
@@ -72,4 +131,24 @@ h1 {
 
 .error {
     background-color: #b85e5e !important;
+}
+
+@keyframes scatter {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -15px;
+    }
+    
+    100% {
+        top: 0;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    h1 {
+        font-size: 10vw;
+    }
 }
