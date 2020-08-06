@@ -167,6 +167,7 @@
     border: 2px solid #52577e;
     background-color: #ffffff;
     font-size: 1.5rem;
+    text-align: center;
     animation: bounce 1.5s;
     z-index: 1;
 }
