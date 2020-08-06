@@ -38,6 +38,8 @@
 #play-area{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     width: 100%;
     flex-grow: 1;
@@ -53,7 +55,7 @@
     justify-content: center;
     box-sizing: border-box;
     flex-grow: 1;
-    padding: 0.5em;
+    max-width: 15vw;
     border-radius: 25px;
     background-color: #777eaf;
 }
@@ -64,8 +66,8 @@
 }
 
 .slot{
-    margin: 0.3em 0;
-    padding: 2em;
+    margin: 0.2em 0.5em;
+    padding: 1.3em;
     border-radius: 50%;
     background-color: #a1a6ca;
 }
@@ -128,7 +130,7 @@
 
 .turn {
     border: 7px dashed #a1a6cad2;
-    padding: 0.4em;
+    padding: 0.4em !important;
 }
 
 .turn p {
@@ -252,13 +254,12 @@
     #menu {
         flex-direction: column;
     }
+
     #game {
-        width: 95vw;
+        min-width: 90vw;
     }
-    .slot {   
-        padding: 3vw;
-    }
-    .column {
-        padding: 1vw;
+
+    .slot {  
+        padding: 4vw;
     }
 }
