@@ -34,9 +34,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    flex-grow: 1;
-    width: 100%;
-    max-height: 437px;
+    min-height: 437px;
     margin: 0;
     padding: 0;
     border-radius: 13px;
@@ -53,7 +51,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     margin: 0;
     padding: 0;
     border-radius: 10px;
@@ -128,9 +125,18 @@
     border-radius: 10px; 
     border-width: 0px; 
     background-color: #5e6491;
+    border: 2px solid #5e6491;
     font-size: 1.5em;
     color: #f0ffff;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover,
+.btn:focus {
+    outline: none;
+    border: 2px solid #f1f1f1;
+    transition: 0.3s;
 }
 
 #navigation-controls {
