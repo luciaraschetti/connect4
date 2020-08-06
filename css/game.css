@@ -55,7 +55,7 @@
     justify-content: center;
     box-sizing: border-box;
     flex-grow: 1;
-    max-width: 10vw;
+    max-width: 15vw;
     border-radius: 25px;
     background-color: #777eaf;
 }
@@ -270,12 +270,22 @@
         width: 100vw;
     }
 
+    .column.three {
+        max-width: 10vw;
+    }
+
     .slot {  
-        padding: 3vw;
+        padding: 4vw;
     }
 
     .turn {
         padding: 0.1em !important;
+    }
+
+    .turn p {
+        margin: 0.2em;
+        padding: 0.2em;
+        font-size: 1rem;
     }
 
     .player p {
