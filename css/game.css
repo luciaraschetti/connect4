@@ -186,10 +186,21 @@
     padding: 0.3em 1em;
     border: none;
     border-radius: 8px;
+    border: 2px solid #5e6491;
     background-color: #5e6491;
     font-size: 1.1rem;
-    color: #f0ffff;
+    color: #f1f1f1;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+#reset:hover,
+#reset:focus {
+    outline: none;
+    border: 2px solid #5e6491;
+    background-color: #f1f1f1;
+    color: #5e6491;
+    transition: 0.3s;
 }
 
 #save {
@@ -198,9 +209,9 @@
     padding: 0.2em;
     border-radius: 10px;
     border: none;
-    border: 2px solid #52577e;
-    background: #f1f1f1;
-    color: #52577e;
+    border: 2px solid #f1f1f1;
+    background-color: #52577e;
+    color: #f1f1f1;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -208,9 +219,9 @@
 #save:hover,
 #save:focus {
     outline: none;
-    border: 2px solid #f1f1f1;
-    background-color: #52577e;
-    color: #f1f1f1;
+    border: 2px solid #52577e;
+    background: #f1f1f1;
+    color: #52577e;
     transition: 0.3s;
 }
 
