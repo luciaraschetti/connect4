@@ -55,7 +55,7 @@
     justify-content: center;
     box-sizing: border-box;
     flex-grow: 1;
-    max-width: 15vw;
+    max-width: 10vw;
     border-radius: 25px;
     background-color: #777eaf;
 }
@@ -267,10 +267,18 @@
     }
 
     #game {
-        min-width: 90vw;
+        width: 100vw;
     }
 
     .slot {  
-        padding: 4vw;
+        padding: 3vw;
+    }
+
+    .turn {
+        padding: 0.1em !important;
+    }
+
+    .player p {
+        font-size: 1.2rem;
     }
 }
