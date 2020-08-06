@@ -99,7 +99,6 @@ var showEmptyList = function() {
 var renderList = function() {
     var storedGames = JSON.parse(localStorage['savedGames']);
     var html = '';
-    console.log(storedGames)
     for(var i = 0; i < storedGames.length; i++) {
         html += '<li tabindex="-1" class="game hidden">';
         html += '<div class="match-container">';
