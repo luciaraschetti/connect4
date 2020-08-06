@@ -66,7 +66,8 @@ var resetGame = function() {
     boardHTML.className = '';
     if(saving) {
         saving = false;
-        startTimers();
+        globalTimer.startTimer();
+        (turn === 'p1') ? p1Timer.startTimer() : (turn === 'p2' ? p2Timer.startTimer() : p3Timer.startTimer());
     } else {
         gameOver = false;
         board.resetBoard();
